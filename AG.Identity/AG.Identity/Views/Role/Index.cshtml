@@ -1,0 +1,27 @@
+﻿@model List<AppRole>
+
+@{
+    Layout = "_Layout";
+}
+
+<table class="table table-hovered table-bordered table-sm">
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>CreeatedTime</th>
+         
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.Name</th>
+                <th>@item.CreatedTime</th>
+                
+            </tr>
+        }
+    </tbody>
+</table>

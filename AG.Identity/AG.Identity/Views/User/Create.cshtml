@@ -1,0 +1,42 @@
+﻿@model CreateUserAdminModel
+@{
+    Layout = "_Layout";
+}
+
+
+<form asp-action="Create" asp-controller=User method="post">
+<div class="mb-3">
+    <label>
+        Kullanıcı Adı:
+    </label>
+    <span class="text-danger" asp-validation-for=@Model.UserName></span>
+    <input type="text" asp-for=@Model.UserName class=form-control/>
+</div>
+
+    <div class="mb-3">
+    <label>
+        Email:
+    </label>
+    <span class="text-danger" asp-validation-for=@Model.Email></span>
+    <input type="email" asp-for=@Model.Email class=form-control/>
+</div>
+
+<div class="mb-3">
+    <label>
+       Cinsiyet:
+    </label>
+    <span class="text-danger" asp-validation-for=@Model.Gender></span>
+    <input type="text" asp-for=@Model.Gender class=form-control/>
+</div>
+
+<div class="mb-3">
+    <button>
+        Kaydet
+    </button>
+</div>
+
+<div class="text-danger mt2" asp-validation-summary="ModelOnly">
+
+</div>
+
+</form>

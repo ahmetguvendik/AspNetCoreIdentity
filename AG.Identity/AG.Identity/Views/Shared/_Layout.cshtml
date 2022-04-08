@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Identity App</title>
+    <link href="\node_modules\bootstrap\dist\css\bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+          <a asp-action="SignOut" asp-controller="Home"  class="nav-link active" aria-current="page">Çıkış Yap</a>
+                            </li>
+                        }
+                        else
+                        {
+                                 <li class="nav-item">
+          <a asp-action="Create" asp-controller="Home" class="nav-link active" aria-current="page">Kayıt Ol</a>
+        </li>
+        <li class="nav-item">
+          <a asp-action="SignIn" asp-controller="Home"  class="nav-link active" aria-current="page">Giriş Yap</a>
+        </li>
+                        }
+
+       
+      </ul>
+                    @if (User.IsInRole("Admin") && (User.Identity.IsAuthenticated))
+                    {
+                        <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+                   
+          <a asp-action="Create" asp-controller="User" class="nav-link active" aria-current="page">Create User</a>
+          <a asp-action="Index" asp-controller="User" class="nav-link active" aria-current="page">User List</a>
+          <a asp-action="Create" asp-controller="Role" class="nav-link active" aria-current="page">Create Role</a>
+          <a asp-action="Index" asp-controller="Role" class="nav-link active" aria-current="page">Role List</a>
+         
+                    }
+    </div>
+  </div>
+</nav>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+
+<script src="\node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
+</body>
+</html>

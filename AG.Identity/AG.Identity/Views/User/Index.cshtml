@@ -1,0 +1,29 @@
+﻿@model List<AppUser>
+
+@{
+    Layout = "_Layout";
+}
+
+<table class="table table-hovered table-bordered table-sm">
+
+    <thead>
+        <tr>
+            <th>UserName</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.UserName</th>
+                <th>@item.Gender</th>
+                <th>@item.Email</th>
+                <th><getUserInfo user-id ="@item.Id"></getUserInfo></th>
+            </tr>
+        }
+    </tbody>
+</table>
